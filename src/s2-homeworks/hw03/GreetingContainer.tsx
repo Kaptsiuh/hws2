@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, Dispatch, KeyboardEvent, SetStateAction, useState } from "react";
 import Greeting from "./Greeting";
 import { UserType } from "./HW3";
 
@@ -7,22 +7,27 @@ type GreetingContainerPropsType = {
   addUserCallback: (name: string) => void;
 };
 
-export const pureAddUser = (name: string, setError: any, setName: any, addUserCallback: any) => {
+export const pureAddUser = (
+  name: string,
+  setError: Dispatch<SetStateAction<string>>,
+  setName: Dispatch<SetStateAction<string>>,
+  addUserCallback: (name: string) => void
+) => {
   if (name.trim() === "") {
     setError("Ошибка! Введите имя!");
   } else {
-    addUserCallback(name);
+    addUserCallback(name.trim());
     setName("");
   }
 };
 
-export const pureOnBlur = (name: any, setError: any) => {
+export const pureOnBlur = (name: string, setError: Dispatch<SetStateAction<string>>) => {
   if (name.trim() === "") {
     setError("Ошибка! Введите имя!");
   }
 };
 
-export const pureOnEnter = (e: any, addUser: any) => {
+export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: () => void) => {
   if (e.key === "Enter") {
     addUser();
   }
@@ -33,12 +38,12 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({ users, addUse
   const [error, setError] = useState<string>("");
 
   const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => {
-    const trimName = e.currentTarget.value.trim();
+    const trimName = e.currentTarget.value;
     if (trimName) {
       setName(trimName);
       error && setError("");
     } else {
-      setName("");
+      name && setName("");
       setError("Ошибка! Введите имя!");
     }
   };
@@ -51,12 +56,12 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({ users, addUse
     pureOnBlur(name, setError);
   };
 
-  const onEnter = (e: any) => {
+  const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     pureOnEnter(e, addUser);
   };
 
   const totalUsers = users.length;
-  const lastUserName = name;
+  const lastUserName = totalUsers > 0 ? users[users.length - 1].name : name;
 
   return (
     <Greeting

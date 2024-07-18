@@ -37,6 +37,7 @@
 }
 
 .button:focus {
+  outline: none;
   opacity: 1;
 }
 
