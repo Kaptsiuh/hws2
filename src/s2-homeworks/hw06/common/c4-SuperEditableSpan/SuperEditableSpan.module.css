@@ -1,10 +1,14 @@
 .spanBlock {
+  margin: 0 70px 30px;
 }
 
 .span {
+  margin-left: 20px;
+  color: rgb(70, 140, 245);
 }
 
 .input {
+  margin-bottom: 22px;
 }
 
 .pen {
