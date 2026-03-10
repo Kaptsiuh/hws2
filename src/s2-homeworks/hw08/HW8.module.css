@@ -11,12 +11,14 @@
 }
 
 .container {
+  margin: 0 70px 70px;
 }
 
 .thead {
 }
 
 .nameCol {
+  padding: 10px;
 }
 
 .ageCol {
