@@ -1,3 +1,7 @@
 .loader {
-    /*свг и/или анимация*/
+  width: 80px;
+  height: 80px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='20' fill='none' stroke='%233498db' stroke-width='6' stroke-linecap='round'%3E%3CanimateTransform attributeName='transform' type='rotate' from='0 40 40' to='360 40 40' dur='1s' repeatCount='indefinite'/%3E%3Canimate attributeName='stroke-dasharray' values='1 130;90 130;1 130' dur='1.5s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
 }
